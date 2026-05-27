@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Student</title>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="dashboard.html">Dashboard</a> &nbsp;
+        <a href="add-student.html">Add Student</a> &nbsp;
+        <a href="view-students.html">View Students</a> &nbsp;
+        <a href="logout.html">Logout</a>
+      </nav>
+    </header>
+    <hr />
+    <main>
+      <h1>Edit Student Details</h1>
+      <form action="view-students.html">
+        Student ID:
+        <input
+          type="text"
+          value="6267"
+          pattern="{0-9}{4,}"
+          required
+        /><br /><br />
+        Student Name: <input type="text" value="Akhil" required pattern="[A-Za-z]{1,}"/><br /><br />
+        Branch:
+        <select name="" id="">
+          <option value="CSE">CSE</option>
+          <option value="CSD">CSD</option>
+          <option value="CSM">CSM</option>
+          <option value="CSC">CSC</option>
+          <option value="CSB">CSB</option>
+          <option value="IT">IT</option>
+          <option value="ECE">ECE</option>
+          <option value="EEE">EEE</option>
+          <option value="EIE">EIE</option>
+          <option value="CIVIL">CIVIL</option>
+          <option value="MECH">MECH</option></select
+        ><br /><br />
+        CGPA: <input type="number" name="" id="" value="9" step="0.01"/><br /><br />
+        <input type="submit" value="Edit" />
+      </form>
+    </main>
+  </body>
+</html>

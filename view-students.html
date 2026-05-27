@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>View Students</title>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="dashboard.html">Dashboard</a> &nbsp;
+        <a href="add-student.html">Add Student</a> &nbsp;
+        <a href="view-students.html">View Students</a> &nbsp;
+        <a href="logout.html">Logout</a>
+      </nav>
+    </header>
+    <hr />
+    <main>
+      <h1>View Student Details</h1>
+      <table cellspacing="5">
+        <tr>
+          <th>StudentID</th>
+          <th>StudentName</th>
+          <th>Branch</th>
+          <th>CGPA</th>
+        </tr>
+        <tr>
+          <td>6267</td>
+          <td>Akhil</td>
+          <td>CSC</td>
+          <td>9.5</td>
+          <td><a href="edit-student.html">Edit</a></td>
+          <td><a href="#">Delete</a></td>
+        </tr>
+      </table>
+      <hr />
+      <form action="dashboard.html">
+        <input type="submit" value="Click here to go back to Dashboard" />
+      </form>
+    </main>
+  </body>
+</html>

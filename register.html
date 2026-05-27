@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register</title>
+  </head>
+
+  <body>
+    <header>
+      <div>
+        <nav>
+          <a href="index.html">Home</a> &nbsp;
+          <a href="login.html">Login</a> &nbsp;
+          <a href="register.html">Register</a>
+        </nav>
+      </div>
+    </header>
+    <hr />
+    <main>
+      <h1>Register</h1>
+      <br />
+      <form action="login.html">
+        Username:
+        <input
+          type="text"
+          name=""
+          id=""
+          required
+          pattern=".{4,}"
+          placeholder="username"
+          title="Username must be 4 characters long"
+        /><br /><br />
+        Email:
+        <input
+          type="email"
+          name=""
+          id=""
+          required
+          placeholder="email"
+        /><br /><br />
+        Password:
+        <input
+          type="password"
+          name=""
+          id=""
+          required
+          pattern=".{8,16}"
+          placeholder="password"
+          title="Password must be 8-16 characters long"
+        /><br /><br />
+        Confirm Password:
+        <input
+          type="password"
+          name=""
+          id=""
+          required
+          pattern=".{8,16}"
+          placeholder="confirm password"
+          title="Password must be 8-16 characters long"
+        /><br /><br />
+        <input type="submit" value="Register" />
+      </form>
+      <br />
+      <hr />
+      <a href="login.html">Click here to go back to login</a>
+    </main>
+  </body>
+</html>
