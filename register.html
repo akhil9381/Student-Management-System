@@ -4,11 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Register</title>
+    <link rel="stylesheet" href="style.css">
   </head>
 
   <body>
     <header>
       <div>
+        <div class="heading">
+          <img src="logo.png" alt="" height="70px">
+          <h1>Student Management System </h1>
+        </div>
         <nav>
           <a href="index.html">Home</a> &nbsp;
           <a href="login.html">Login</a> &nbsp;
@@ -16,10 +21,8 @@
         </nav>
       </div>
     </header>
-    <hr />
     <main>
       <h1>Register</h1>
-      <br />
       <form action="login.html">
         Username:
         <input
@@ -30,7 +33,7 @@
           pattern=".{4,}"
           placeholder="username"
           title="Username must be 4 characters long"
-        /><br /><br />
+        />
         Email:
         <input
           type="email"
@@ -38,7 +41,7 @@
           id=""
           required
           placeholder="email"
-        /><br /><br />
+        />
         Password:
         <input
           type="password"
@@ -48,7 +51,7 @@
           pattern=".{8,16}"
           placeholder="password"
           title="Password must be 8-16 characters long"
-        /><br /><br />
+        />
         Confirm Password:
         <input
           type="password"
@@ -58,12 +61,13 @@
           pattern=".{8,16}"
           placeholder="confirm password"
           title="Password must be 8-16 characters long"
-        /><br /><br />
+        />
         <input type="submit" value="Register" />
       </form>
-      <br />
-      <hr />
-      <a href="login.html">Click here to go back to login</a>
+      <br>
+      <hr>
+      Already have an account?
+      <a href="login.html">Click here to login</a>
     </main>
   </body>
 </html>

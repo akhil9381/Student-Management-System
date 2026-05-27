@@ -4,9 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Edit Student</title>
+    <link rel="stylesheet" href="style.css">
   </head>
   <body>
     <header>
+      <div class="heading">
+        <img src="logo.png" alt="" height="70px">
+        <h1>Student Management System </h1>
+      </div>
       <nav>
         <a href="dashboard.html">Dashboard</a> &nbsp;
         <a href="add-student.html">Add Student</a> &nbsp;
@@ -14,7 +19,6 @@
         <a href="logout.html">Logout</a>
       </nav>
     </header>
-    <hr />
     <main>
       <h1>Edit Student Details</h1>
       <form action="view-students.html">
@@ -24,9 +28,10 @@
           value="6267"
           pattern="{0-9}{4,}"
           required
-        /><br /><br />
-        Student Name: <input type="text" value="Akhil" required pattern="[A-Za-z]{1,}"/><br /><br />
+        />
+        Student Name: <input type="text" value="Akhil" required pattern="[A-Za-z]{1,}"/>
         Branch:
+        <br>
         <select name="" id="">
           <option value="CSE">CSE</option>
           <option value="CSD">CSD</option>
@@ -39,8 +44,9 @@
           <option value="EIE">EIE</option>
           <option value="CIVIL">CIVIL</option>
           <option value="MECH">MECH</option></select
-        ><br /><br />
-        CGPA: <input type="number" name="" id="" value="9" step="0.01"/><br /><br />
+        >
+        <br>
+        CGPA: <input type="number" name="" id="" value="9" step="0.01"/>
         <input type="submit" value="Edit" />
       </form>
     </main>

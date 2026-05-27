@@ -4,10 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login</title>
+    <link rel="stylesheet" href="style.css">
   </head>
   <body>
     <header>
       <div>
+        <div class="heading">
+          <img src="logo.png" alt="" height="70px">
+          <h1>Student Management System </h1>
+        </div>
         <nav>
           <a href="index.html">Home</a> &nbsp;
           <a href="login.html">Login</a> &nbsp;
@@ -15,10 +20,8 @@
         </nav>
       </div>
     </header>
-    <hr />
     <main>
       <h1>Login</h1>
-      <br />
       <form action="dashboard.html">
         Email:
         <input
@@ -27,7 +30,7 @@
           id=""
           required
           placeholder="email"
-        /><br /><br />
+        />
         Password:
         <input
           type="password"
@@ -36,9 +39,13 @@
           required
           pattern=".{8,16}"
           placeholder="password"
-        /><br /><br />
+        />
         <input type="submit" value="Login" />
       </form>
+      <br>
+      <hr>
+      Do not have an account?
+      <a href="register.html">Click here to register</a>
     </main>
   </body>
 </html>

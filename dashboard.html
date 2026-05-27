@@ -4,9 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard</title>
+    <link rel="stylesheet" href="style.css">
   </head>
   <body>
     <header>
+      <div class="heading">
+        <img src="logo.png" alt="" height="70px">
+        <h1>Student Management System </h1>
+      </div>
       <nav>
         <a href="dashboard.html">Dashboard</a> &nbsp;
         <a href="add-student.html">Add Student</a> &nbsp;
@@ -14,16 +19,10 @@
         <a href="logout.html">Logout</a>
       </nav>
     </header>
-    <hr />
     <main>
       <h1>Welcome to Dashboard</h1>
-      <form action="add-student.html">
-        <input type="submit" value="Click here to add student " />
-      </form>
-      <br />
-      <form action="view-students.html">
-        <input type="submit" value="Click here to view students " />
-      </form>
+        <a href="add-student.html">Click here to add Student</a>
+        <a href="view-students.html">Click here to View Students</a>
     </main>
   </body>
 </html>

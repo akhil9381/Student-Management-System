@@ -4,9 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>View Students</title>
+    <link rel="stylesheet" href="style.css">
   </head>
   <body>
     <header>
+      <div class="heading">
+        <img src="logo.png" alt="" height="70px">
+        <h1>Student Management System </h1>
+      </div>
       <nav>
         <a href="dashboard.html">Dashboard</a> &nbsp;
         <a href="add-student.html">Add Student</a> &nbsp;
@@ -14,29 +19,55 @@
         <a href="logout.html">Logout</a>
       </nav>
     </header>
-    <hr />
     <main>
       <h1>View Student Details</h1>
       <table cellspacing="5">
         <tr>
-          <th>StudentID</th>
-          <th>StudentName</th>
+          <th>Student ID</th>
+          <th>Student Name</th>
           <th>Branch</th>
           <th>CGPA</th>
+          <th>Actions</th>
         </tr>
         <tr>
           <td>6267</td>
           <td>Akhil</td>
           <td>CSC</td>
           <td>9.5</td>
-          <td><a href="edit-student.html">Edit</a></td>
-          <td><a href="#">Delete</a></td>
+          <td><a href="edit-student.html">Edit</a><a href="#">Delete</a></td>
+        </tr>
+        <tr>
+          <td>6267</td>
+          <td>Akhil</td>
+          <td>CSC</td>
+          <td>9.5</td>
+          <td><a href="edit-student.html">Edit</a><a href="#">Delete</a></td>
+        </tr>
+        <tr>
+          <td>6291</td>
+          <td>Luqman</td>
+          <td>CSC</td>
+          <td>9.3</td>
+          <td><a href="edit-student.html">Edit</a><a href="#">Delete</a></td>
+        </tr>
+        <tr>
+          <td>6287</td>
+          <td>Karthikeya</td>
+          <td>CSC</td>
+          <td>8.5</td>
+          <td><a href="edit-student.html">Edit</a><a href="#">Delete</a></td>
+        </tr>
+        <tr>
+          <td>6299</td>
+          <td>Raju</td>
+          <td>CSC</td>
+          <td>6</td>
+          <td><a href="edit-student.html">Edit</a><a href="#">Delete</a></td>
         </tr>
       </table>
-      <hr />
-      <form action="dashboard.html">
-        <input type="submit" value="Click here to go back to Dashboard" />
-      </form>
+    <br>
+    <hr>
+    <a href="dashboard.html">Click here to go to Dashboard</a>
     </main>
   </body>
 </html>
