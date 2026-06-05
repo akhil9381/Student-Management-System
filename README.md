@@ -49,6 +49,7 @@ A simple and responsive Student Management System built using **HTML**, **Bootst
 ![Dashboard](dashboard.png)
 
 ---
+### Mobile-View
 ![Mobile-View](mobile-view.png)
 ## Project Structure
 
