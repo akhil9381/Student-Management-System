@@ -58,12 +58,13 @@ Student-Management-System/
 │
 ├── index.html
 ├── login.html
-├── register.html
+├── studentregister.html
 ├── dashboard.html
-├── css/
-│   └── style.css
-├── js/
-│   └── script.js
+├── add-student.html
+├── contactus.html
+├── edit-student.html
+├── logout.html
+├── profile.html
 ├── home-page.png
 ├── student-registration.png
 ├── dashboard.png
