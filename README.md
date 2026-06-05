@@ -64,9 +64,9 @@ Student-Management-System/
 │   └── style.css
 ├── js/
 │   └── script.js
-├── images/
-│   ├── home-page.png
-│   ├── student-registration.png
-│   ├── dashboard.png
-│   └── logo.png
+├── home-page.png
+├── student-registration.png
+├── dashboard.png
+├── mobile-view.png
+├── logo.png
 └── README.md
