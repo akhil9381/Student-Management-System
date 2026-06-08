@@ -77,6 +77,41 @@
             opacity: 1 !important;
         }
     </style>
+    <script>
+        function registrationValidation(){
+            event.preventDefault();
+            var cname=document.getElementById('cname').value;
+            var uid=document.getElementById('uid').value
+            var email=document.getElementById('email').value
+            var pass=document.getElementById('pass').value
+            var cpass=document.getElementById('cpass').value
+            var address=document.getElementById('address').value
+            if(pass!==cpass){
+                alert('Passwords do not match');
+                return
+            }
+            const c={
+                cname:cname,
+                uid:uid,
+                email:email,
+                pass:pass,
+                address:address,
+                students:[]
+            }
+            var college=JSON.parse(localStorage.getItem('colleges'))||[]
+            for(x of college){
+                if(x.uid.toLowerCase()===c.uid.toLowerCase()){
+                    alert('College with same id exists')
+                    return
+                }
+            }
+            college.push(c)
+            localStorage.setItem('colleges',JSON.stringify(college))
+            alert('Registration Successful')
+            window.location.href="login.html"
+            event.target.reset
+        }
+    </script>
 </head>
 
 <body class="m-0 border-0 text-center bg-white ">
@@ -128,70 +163,39 @@
     </header>
     <main class="d-flex justify-content-center align-items-center h-100" style="background-color: #f8f9fa;">
         <div class="d-flex flex-column w-100" style="max-width: 600px; padding: 20px;">
-            <form action="login.html" class="d-flex flex-column border border-1 p-4 border-black rounded-3">
-                <h1 class="text-center mb-3">Student Registration</h1>
+            <form onsubmit="registrationValidation()" class="d-flex flex-column border border-1 p-4 border-black rounded-3">
+                <h1 class="text-center mb-3">College Registration</h1>
                 <div class="mb-3 text-start">
-                    <label for="name" class="form-label fs-6">Full Name</label>
-                    <input type="text" name="" id="name" required class="form-control border border-2 border-info"
-                        pattern=".{4,}" placeholder="Full Name" />
+                    <label for="name" class="form-label fs-6">College Name</label>
+                    <input type="text" name="" id="cname" required class="form-control border border-2 border-info"
+                        pattern=".{4,}" placeholder="College Name" />
                 </div>
                 <div class="mb-3 text-start">
-                    <label for="rollno" class="form-label fs-6">Roll Number</label>
-                    <input type="text" name="" id="rollno" required class="form-control border border-2 border-info"
-                        pattern=".{10}" placeholder="Roll No" />
+                    <label for="rollno" class="form-label fs-6">University ID</label>
+                    <input type="text" name="" id="uid" required class="form-control border border-2 border-info"
+                        pattern=".{10}" placeholder="University ID" />
                 </div>
                 <div class="mb-3 text-start">
                     <label for="" class="form-label fs-6">Email</label>
-                    <input type="email" name="" class="form-control border border-2 border-info" id="" required
+                    <input type="email" name="" class="form-control border border-2 border-info" id="email" required
                         placeholder="Email" />
                 </div>
                 <div class="mb-3 text-start">
-                    <label for="" class="form-label fs-6">Mobile Number</label>
-                    <input type="tel" name="" class="form-control border border-2 border-info" id="" pattern="[0-9]{10}"
-                        required placeholder="Mobile Number" />
+                    <label for="" class="form-label fs-6">Password</label>
+                    <input type="password" name="" class="form-control border border-2 border-info" id="pass" required
+                        placeholder="Password" />
                 </div>
                 <div class="mb-3 text-start">
-                    <label for="" class="form-label fs-6">Gender</label>
-                    <div class="form-check">
-                        <input type="radio" class="form-check-input" id="radio1" name="optradio" value="option1"
-                            checked>Male
-                        <label class="form-check-label" for="radio1"></label>
-                    </div>
-                    <div class="form-check">
-                        <input type="radio" class="form-check-input" id="radio2" name="optradio" value="option2">Female
-                        <label class="form-check-label" for="radio2"></label>
-                    </div>
-                </div>
-                <div class="mb-3 text-start">
-                    <label for="" class="fw-6 form-label">Branch</label>
-                    <select name="" id="" class="form-select border border-2 border-info">
-                        <option value="CSE">CSE</option>
-                        <option value="CSD">CSD</option>
-                        <option value="CSM">CSM</option>
-                        <option value="CSC">CSC</option>
-                        <option value="CSB">CSB</option>
-                        <option value="IT">IT</option>
-                        <option value="ECE">ECE</option>
-                        <option value="EEE">EEE</option>
-                        <option value="EIE">EIE</option>
-                        <option value="CIVIL">CIVIL</option>
-                        <option value="MECH">MECH</option>
-                    </select>
-                </div>
-                <div class="mb-3 text-start">
-                    <label for="" class="fs-6 form-label">Date of Birth</label>
-                    <input type="date" name="" id="" class="form-control border border-2 border-info" required/>
+                    <label for="" class="form-label fs-6">Confirm Password</label>
+                    <input type="password" name="" class="form-control border border-2 border-info" id="cpass" required
+                        placeholder="Confirm Password" />
                 </div>
                 <div class="mb-3 text-start">
                     <label for="" class="fs-6 form-label">Address</label>
-                    <textarea class="form-control  border border-2 border-info" id=""></textarea>
+                    <textarea class="form-control  border border-2 border-info" id="address" required></textarea>
                 </div>
                 <div class="mb-3 text-start">
-                    <label for="" class="fs-6 form-label">Upload Photo</label>
-                    <input type="file" name="" id="" class="form-control border border-2 border-info">
-                </div>
-                <div class="mb-3 text-start">
-                    <input type="checkbox" name="" id="" class="form-check-input">
+                    <input type="checkbox" name="" id="terms" class="form-check-input" required>
                     <label for="" class="form-check-label">I agree to the terms and conditions</label>
                 </div>
                 <button type="submit" class="btn btn-primary w-100 mb-3">Submit</button>

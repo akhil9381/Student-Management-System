@@ -73,6 +73,26 @@
         opacity: 1 !important;
       }
     </style>
+    <script>
+      function loginValidation(){
+        event.preventDefault();
+        var email=document.getElementById('emailaddress').value;
+        var pass=document.getElementById('password').value
+        const colleges=JSON.parse(localStorage.getItem('colleges'))||[]
+        if(colleges){
+          for(var college of colleges){
+            if(college.email===email && college.pass===pass){
+              alert('Login Successful');
+              sessionStorage.setItem('logged',college.uid)
+              window.location.href="dashboard.html"
+              return
+            }
+          }
+        }
+        alert('Email or password is wrong!');
+        event.target.reset()
+      }
+    </script>
   </head>
   <body class="m-0 border-0 text-center bg-white ">
     <header>
@@ -125,7 +145,7 @@
   <div class="d-flex flex-column w-100" style="max-width: 400px; padding: 20px;">
     
     <!-- Login Form -->
-    <form action="dashboard.html" class="d-flex flex-column border border-1 p-4 border-black rounded-3">
+    <form onsubmit="loginValidation()" class="d-flex flex-column border border-1 p-4 border-black rounded-3">
       <h1 class="mb-5 text-center">Login</h1>
       
       <div class="mb-3 text-start">
@@ -144,7 +164,7 @@
     <!-- Registration Link Section (Perfect alignment retained) -->
     <div class="text-center border-top pt-3 mt-2">
       <p class="mb-0 text-muted">
-        Don't have an account? <a href="register.html" class="text-decoration-none">Click here to register</a>
+        Don't have an account? <a href="collegeregister.html" class="text-decoration-none">Click here to register</a>
       </p>
     </div>
 
