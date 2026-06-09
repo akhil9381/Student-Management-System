@@ -15,14 +15,24 @@
         if(colleges){
           for(var college of colleges){
             if(college.email===email && college.pass===pass){
-              alert('Login Successful');
               sessionStorage.setItem('logged',college.uid)
-              window.location.href="dashboard.html"
+              let main=document.getElementById('maincont')
+              let success=document.createElement('p')
+              success.innerText='Login Successful'
+              success.style='color:#07A902; border-width:1px;border-style:solid;border-color:lightgreen; padding:10px; font-weight:bold; background-color:#C0EBBE; border-radius:5px'
+              main.prepend(success)
+              event.target.reset()
+              setTimeout(()=>{
+              window.location.href="dashboard.html"},1500)
               return
             }
           }
         }
-        alert('Email or password is wrong!');
+        let main=document.getElementById('maincont')
+        let success=document.createElement('p')
+        success.innerText='Email or Password is wrong'
+        success.style='color:red; border-width:1px;border-style:solid;border-color:rgb(255, 105, 105); padding:10px; font-weight:bold; background-color:#ECDBDB;border-radius:5px'
+        main.prepend(success)
         event.target.reset()
       }
     </script>
@@ -31,7 +41,7 @@
     <header>
       <div>
         <div class="heading bg-primary p-1 text-white">
-            <img class="align-middle rounded-circle" src="logo.png" alt="" height="70px">
+            <img class="align-middle rounded-circle" src="logo.png" alt="" height="70px" >
           <h1 class="fw-bold p-3 d-inline-block align-middle">Student Management System </h1>
         </div>
         <nav class="navbar navbar-expand-lg navbar-dark p-0" style="background-color: rgb(0 , 0, 36);">
@@ -75,7 +85,7 @@
 <main class="d-flex justify-content-center align-items-center h-100" style="background-color: #f8f9fa;">
   
   <!-- This wrapper holds everything together and handles the vertical stacking -->
-  <div class="d-flex flex-column w-100" style="max-width: 400px; padding: 20px;">
+  <div class="d-flex flex-column w-100" style="max-width: 400px; padding: 20px;" id="maincont">
     
     <!-- Login Form -->
     <form onsubmit="loginValidation()" class="d-flex flex-column border border-1 p-4 border-black rounded-3">

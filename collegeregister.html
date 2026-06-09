@@ -37,9 +37,14 @@
             }
             college.push(c)
             localStorage.setItem('colleges',JSON.stringify(college))
-            alert('Registration Successful')
-            window.location.href="login.html"
-            event.target.reset
+            var main=document.getElementById('maincont')
+            var success=document.createElement('p')
+            success.innerText='Registration Successful'
+            success.style='color:#06C100; border-width:1px;border-style:solid;border-color:lightgreen; padding:10px; font-weight:bold; background-color:#C0EBBE'
+            main.prepend(success)
+            event.target.reset()
+            setTimeout(()=>{
+            window.location.href="login.html"},1500)
         }
     </script>
 </head>
@@ -47,7 +52,7 @@
 <body class="m-0 border-0 text-center bg-white ">
     <header>
         <div>
-            <div class="heading bg-primary p-1 text-white">
+            <div class="heading bg-primary p-1 text-white" >
                 <img class="align-middle rounded-circle" src="logo.png" alt="" height="70px">
                 <h1 class="fw-bold p-3 d-inline-block align-middle">Student Management System </h1>
             </div>
@@ -92,7 +97,7 @@
         </div>
     </header>
     <main class="d-flex justify-content-center align-items-center h-100" style="background-color: #f8f9fa;">
-        <div class="d-flex flex-column w-100" style="max-width: 600px; padding: 20px;">
+        <div class="d-flex flex-column w-100" style="max-width: 600px; padding: 20px;" id="maincont">
             <form onsubmit="registrationValidation()" class="d-flex flex-column border border-1 p-4 border-black rounded-3">
                 <h1 class="text-center mb-3">College Registration</h1>
                 <div class="mb-3 text-start">

@@ -12,6 +12,7 @@
     let uid=sessionStorage.getItem('logged')
     let colleges=JSON.parse(localStorage.getItem('colleges'))
     let college=null
+    let sid=null
     for(let x of colleges){
         if(x.uid===uid){
             college=x
@@ -23,11 +24,14 @@
     tbody.innerHTML=''
     for(var student of college.students){
         var tr=document.createElement('tr')
-        tr.innerHTML=`<td>${student.id}</td><td>${student.name}</td><td>${student.branch}</td><td>${student.cgpa}</td><td><button onclick="profile(${student.id})" class="text-decoration-none m-2 btn btn-info">View</button><button class="text-decoration-none m-2 btn btn-success edit-btn" onclick="editStudent(${student.id})">Edit</button><button class="text-decoration-none m-2 btn btn-danger delete-btn" onclick="deleteStudent(${student.id})">Delete</button></td>`
+        tr.innerHTML=`<td>${student.id}</td><td>${student.name}</td><td>${student.branch}</td><td>${student.cgpa}</td><td><button onclick="profile(${student.id})" class="text-decoration-none m-2 btn btn-info">View</button><button class="text-decoration-none m-2 btn btn-success edit-btn" onclick="editStudent(${student.id})">Edit</button><button class="text-decoration-none m-2 btn btn-danger delete-btn" data-bs-toggle="modal" data-bs-target="#deletemodal" onclick="setsid(${student.id})">Delete</button></td>`
         tbody.appendChild(tr)
     }
     }
-    function deleteStudent(sid){
+    function setsid(id){
+      sid=id
+    }
+    function deleteStudent(){
       var students=[]
         for(var s of college.students){
           if(s.id!=sid)
@@ -44,6 +48,15 @@
         colleges[cid]=college
         localStorage.setItem('colleges',JSON.stringify(colleges))
         viewStudent();
+        let main=document.getElementById('maincont')
+        let success=document.createElement('p')
+        success.innerText='Student Deleted'
+        success.style='color:red; border-width:1px;border-style:solid;border-color:rgb(255, 105, 105); padding:10px; font-weight:bold; background-color:#ECDBDB;border-radius:5px'
+        main.prepend(success)
+        success.style.display='block';
+        setTimeout(() => {
+           success.style.display='none'
+        }, 1500);
     }
     function editStudent(sid){
       var student=null;
@@ -109,7 +122,7 @@
     </nav>
   </header>
   <main class="d-flex flex-column align-items-center justify-content-center h-100 mt-5">
-    <div class="d-flex flex-column w-100" style="max-width: 800px; padding: 20px;">
+    <div class="d-flex flex-column w-100" style="max-width: 800px; padding: 20px;" id="maincont">
         <h1 class="mb-5 text-center">Student Details</h1>
         <div class="table-responsive">
           <table class="table table-hover table-bordered border-black">
@@ -145,7 +158,7 @@
       </div>
     </div>
   </div>
-  <div class="modal" id="deletemodal">
+  <div class="modal fade" id="deletemodal">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
@@ -153,7 +166,7 @@
             </div>
             <div class="modal-body text-start display-6">Do you want to delete?</div>
             <div class="modal-footer">
-              <a href="dashboard.html" class="btn btn-danger">Yes</a>
+              <button class="btn btn-danger" data-bs-dismiss="modal" onclick="deleteStudent()">Yes</button>
               <button class="btn btn-success" data-bs-dismiss="modal">No</button>
             </div>
           </div>
