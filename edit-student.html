@@ -4,44 +4,59 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
-  <style>
-    .navbar-dark .navbar-nav {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      align-items: center;
-      gap: 1.5rem;
-      margin: 0;
-    }
-
-    .navbar-dark .navbar-nav .nav-link {
-      position: relative;
-      /* color: #fff; */
-      transition: color .2s ease;
-      padding: .5rem .75rem;
-    }
-
-    .navbar-dark .navbar-nav .nav-link::after {
-      content: "";
-      position: absolute;
-      left: 50%;
-      bottom: 0;
-      width: 0;
-      height: 2px;
-      background-color: #ffc107;
-      transition: width .25s ease, left .25s ease;
-    }
-
-    .navbar-dark .navbar-nav .nav-link:hover {
-      color: #ffffff;
-    }
-
-    .navbar-dark .navbar-nav .nav-link:hover::after {
-      width: 100%;
-      left: 0;
-    }
-  </style>
+    <link rel="stylesheet" href="style.css">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded',function(){
+      let student=JSON.parse(sessionStorage.getItem('editStudent'))
+      document.getElementById('id').value=student.id
+      document.getElementById('name').value=student.name
+      document.getElementById('branch').value=student.branch
+      document.getElementById('cgpa').value=student.cgpa
+    })
+    function updatestudent(){
+      event.preventDefault();
+      var id=document.getElementById('id').value
+      var name=document.getElementById('name').value
+      var branch=document.getElementById('branch').value
+      var cgpa=document.getElementById('cgpa').value
+      const student={
+        id:id,
+        name:name,
+        branch:branch,
+        cgpa:cgpa
+      }
+      const uid=sessionStorage.getItem('logged')
+      var colleges=JSON.parse(localStorage.getItem('colleges'))
+      var cid=-1
+      for(var i=0;i<colleges.length;i++){
+        if(colleges[i].uid===uid){
+          cid=i;
+          break
+        }
+      }
+      console.log(cid)
+      const college=colleges[cid]
+      var sid=-1
+      for(var i=0;i<college.students.length;i++){
+        if(college.students[i].id==id){
+          sid=i;
+          break;
+        }
+      }
+      console.log(sid)
+      college.students[sid]=student;
+      colleges[cid]=college
+      localStorage.setItem('colleges',JSON.stringify(colleges))
+      sessionStorage.removeItem('editStudent')
+      window.location.href='viewstudent.html'
+    }
+    function cancelfunc(){
+      event.preventDefault();
+      sessionStorage.removeItem('editStudent');
+      window.location.href='viewstudent.html'
+    }
+  </script>
     </head>
   <body class="m-0 border-0 text-center bg-white ">
     <header>
@@ -77,25 +92,27 @@
     </header>
     <main class="d-flex justify-content-center align-items-center h-100" style="background-color: #f8f9fa;">
       <div class="d-flex flex-column w-100" style="max-width: 500px; padding: 20px;">
-        <form action="dashboard.html" class="d-flex flex-column border border-1 p-4 border-black rounded-3">
+        <form onsubmit="updatestudent()" class="d-flex flex-column border border-1 p-4 border-black rounded-3">
           <h1 class="mb-3 text-center">Edit Student Details</h1>
           <div class="mb-3 text-start">
            <label for="" class="fs-6 form-label">Student ID</label>
           <input
             type="text"
-            value="6267"
+            value=""
             class="form-control border border-2 border-info"
             pattern="{0-9}{4,}"
+            id="id"
             required
+            readonly
           />
           </div>
            <div class="mb-3 text-start">
            <label for="" class="fs-6 form-label">Student Name</label>
-           <input type="text" value="Akhil" class="form-control border border-2 border-info" required pattern="[A-Za-z]{1,}"/>
+           <input type="text" value="" class="form-control border border-2 border-info" required pattern="[A-Za-z]{1,}" id="name"/>
           </div>
            <div class="mb-3 text-start">
            <label for="" class="fs-6 form-label">Branch</label>
-           <select name="" id="" class="form-select border border-2 border-info">
+           <select name="" id="branch" class="form-select border border-2 border-info">
             <option value="CSE">CSE</option>
             <option value="CSD">CSD</option>
             <option value="CSM">CSM</option>
@@ -111,10 +128,10 @@
           </div>
           <div class="mb-4 text-start">
            <label for="" class="fs-6 form-label">CGPA</label>
-           <input type="number" name="" id="" value="9" step="0.01" class="form-control border border-2 border-info"/>
+           <input type="number" name="" id="cgpa" value="" step="0.01" class="form-control border border-2 border-info"/>
           </div>
           <button type="submit" class="mb-4 btn btn-primary">Submit</button>
-          <a href="view-students.html" class="btn btn-danger">Cancel</a>
+          <button class="btn btn-danger mb-4" onclick="cancelfunc()">Cancel</button>
         </form>
       </div>
     </main>
@@ -135,7 +152,7 @@
         </div>
       </div>
     </div>
-    <footer class="border-top border-black mt-4">
+    <footer class="border-top border-black mt-4 ">
     <p class="mt-2 mb-1">&copy; Student Management System, All rights registered </p>
     <a href="#" class="text-decoration-none icon-link">LinkedIn<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-linkedin" viewBox="0 0 16 16">
   <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z"/>

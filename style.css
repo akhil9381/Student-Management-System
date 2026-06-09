@@ -1,0 +1,178 @@
+.navbar-dark .navbar-nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    margin: 0;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    position: relative;
+    transition: color .2s ease;
+    padding: .5rem .75rem;
+}
+
+.navbar-dark .navbar-nav .nav-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 2px;
+    background-color: #ffc107;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform .25s ease;
+    pointer-events: none;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover,
+.navbar-dark .navbar-nav .nav-link:focus {
+    color: #fff;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover::after,
+.navbar-dark .navbar-nav .nav-link:focus::after,
+.navbar-nav .nav-item.show .nav-link::after {
+    transform: scaleX(1);
+}
+
+/* Show dropdown on hover and hide when not hovered */
+.navbar-nav .dropdown:hover>.dropdown-menu {
+    display: block;
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.navbar-nav .dropdown .dropdown-menu {
+    margin-top: 0.25rem;
+    border-top: 0;
+    /* avoid double-thick line with underline */
+}
+
+/* Remove underline for dropdown toggles to prevent overlapping lines */
+.navbar-nav .dropdown .nav-link::after {
+    display: none;
+}
+
+/* Position dropdown absolutely so it overlays below the navbar */
+.navbar .dropdown {
+    position: relative;
+}
+
+.navbar .dropdown .dropdown-menu {
+    position: absolute;
+    top: calc(100% + 0.25rem);
+    left: 0;
+    z-index: 2000;
+    display: none;
+    /* ensure controlled by hover */
+    transform: none !important;
+    opacity: 1 !important;
+}
+
+/* Hover effects for registration buttons */
+.btn-primary,
+.btn-success,
+.btn-info,
+.btn-danger,
+.card {
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-primary:hover {
+    background-color: #0a58ca;
+    box-shadow: 0 6px 15px rgba(13, 110, 253, 0.4);
+    transform: translateY(-2px);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+    box-shadow: 0 3px 8px rgba(13, 110, 253, 0.3);
+}
+
+.btn-success:hover {
+    background-color: #157347;
+    box-shadow: 0 6px 15px rgba(25, 135, 84, 0.4);
+    transform: translateY(-2px);
+}
+
+.btn-success:active {
+    transform: translateY(0);
+    box-shadow: 0 3px 8px rgba(25, 135, 84, 0.3);
+}
+
+.btn-info:hover {
+    background-color: aqua;
+    box-shadow: 0 6px 15px rgba(11, 193, 254, 0.3);
+    transform: translateY(-2px);
+}
+
+.btn-info:active {
+    transform: translateY(0);
+    box-shadow: 0 3px 8px rgba(11, 193, 254, 0.3);
+}
+
+.btn-danger:hover {
+    background-color: rgb(196, 0, 0);
+    box-shadow: 0 6px 15px rgba(195, 0, 0, 0.3);
+    transform: translateY(-2px);
+}
+
+.btn-danger:active {
+    transform: translateY(0);
+    box-shadow: 0 3px 8px rgba(164, 0, 0, 0.3);
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px grey;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+.info1,
+.info2,
+.info3,
+.info4 {
+    transition: all 0.3s ease;
+}
+
+.info1:hover {
+    background-color: #0048b4 !important;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px royalblue;
+}
+
+.info2:hover {
+    background-color: #007155 !important;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgb(0, 118, 73);
+}
+
+.info3:hover {
+    background-color: #8d0303 !important;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgb(163, 2, 2);
+}
+
+.info4:hover {
+    background-color: #00eeff !important;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgb(1, 183, 200);
+}
+
+td a {
+    display: block;
+    transition: all 1s ease;
+}
+
+td a:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgb(129, 129, 57);
+}
