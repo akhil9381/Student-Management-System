@@ -19,7 +19,6 @@ A simple and responsive Student Management System built using **HTML**, **Bootst
 - Login page access
 - Introduction to the Student Management System
 
-![Home Page](home-page.png)
 
 ---
 
@@ -33,7 +32,6 @@ A simple and responsive Student Management System built using **HTML**, **Bootst
 - Branch selection
 - Form validation support
 
-![Student Registration](student-registration.png)
 
 ---
 
@@ -46,11 +44,9 @@ A simple and responsive Student Management System built using **HTML**, **Bootst
 - Student details table
 - View, Edit, and Delete actions
 
-![Dashboard](dashboard.png)
 
 ---
-### Mobile-View
-![Mobile-View](mobile-view.png)
+
 ## Project Structure
 
 ```text
