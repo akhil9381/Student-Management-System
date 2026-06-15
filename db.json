@@ -1,0 +1,22 @@
+{
+  "colleges": [
+    {
+      "cname": "CVR College",
+      "uid": "cvr1234567",
+      "email": "cvr@cvr.ac.in",
+      "pass": "12345678",
+      "address": "16-391/1, POLICE STATION ROAD, PIDUGURALLA URBAN",
+      "id": "WjGMAlsC8TY"
+    }
+  ],
+  "students": [
+    {
+      "rollno": "6291",
+      "name": "Luqman Mahbub",
+      "branch": "CSE",
+      "cgpa": "7.9",
+      "id": "3WjuLTck6zg"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}

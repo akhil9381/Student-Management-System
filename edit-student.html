@@ -7,53 +7,41 @@
     <link rel="stylesheet" href="style.css">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-    document.addEventListener('DOMContentLoaded',function(){
-      let student=JSON.parse(sessionStorage.getItem('editStudent'))
-      document.getElementById('id').value=student.id
+    document.addEventListener('DOMContentLoaded',async function(){
+      const p=new URLSearchParams(window.location.search)
+      const id=p.get('id')
+      const d=await fetch(`http://localhost:3000/students/${id}`)
+      const student=await d.json();
+      document.getElementById('id').value=student.rollno
       document.getElementById('name').value=student.name
       document.getElementById('branch').value=student.branch
       document.getElementById('cgpa').value=student.cgpa
     })
-    function updatestudent(){
+    async function updatestudent(){
       event.preventDefault();
       var id=document.getElementById('id').value
       var name=document.getElementById('name').value
       var branch=document.getElementById('branch').value
       var cgpa=document.getElementById('cgpa').value
       const student={
-        id:id,
+        rollno:id,
         name:name,
         branch:branch,
         cgpa:cgpa
       }
-      const uid=sessionStorage.getItem('logged')
-      var colleges=JSON.parse(localStorage.getItem('colleges'))
-      var cid=-1
-      for(var i=0;i<colleges.length;i++){
-        if(colleges[i].uid===uid){
-          cid=i;
-          break
-        }
-      }
-      console.log(cid)
-      const college=colleges[cid]
-      var sid=-1
-      for(var i=0;i<college.students.length;i++){
-        if(college.students[i].id==id){
-          sid=i;
-          break;
-        }
-      }
-      console.log(sid)
-      college.students[sid]=student;
-      colleges[cid]=college
-      localStorage.setItem('colleges',JSON.stringify(colleges))
-      sessionStorage.removeItem('editStudent')
+      const p=new URLSearchParams(window.location.search)
+      const sid=p.get('id')
+      const d=await fetch(`http://localhost:3000/students/${sid}`,{
+        method:'PUT',
+        headers:{
+          'Content-Type':'application/json'
+        },
+        body:JSON.stringify(student)
+      })
       window.location.href='viewstudent.html'
     }
     function cancelfunc(){
       event.preventDefault();
-      sessionStorage.removeItem('editStudent');
       window.location.href='viewstudent.html'
     }
   </script>
@@ -108,7 +96,7 @@
           </div>
            <div class="mb-3 text-start">
            <label for="" class="fs-6 form-label">Student Name</label>
-           <input type="text" value="" class="form-control border border-2 border-info" required pattern="[A-Za-z]{1,}" id="name"/>
+           <input type="text" value="" class="form-control border border-2 border-info" required pattern="[^0-9!@#$%^&*()_+]{1,}" id="name"/>
           </div>
            <div class="mb-3 text-start">
            <label for="" class="fs-6 form-label">Branch</label>

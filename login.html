@@ -7,33 +7,20 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
     <script>
-      function loginValidation(){
+      async function loginValidation(){
         event.preventDefault();
         var email=document.getElementById('emailaddress').value;
         var pass=document.getElementById('password').value
-        const colleges=JSON.parse(localStorage.getItem('colleges'))||[]
-        if(colleges){
-          for(var college of colleges){
-            if(college.email===email && college.pass===pass){
-              sessionStorage.setItem('logged',college.uid)
-              let main=document.getElementById('maincont')
-              let success=document.createElement('p')
-              success.innerText='Login Successful'
-              success.style='color:#07A902; border-width:1px;border-style:solid;border-color:lightgreen; padding:10px; font-weight:bold; background-color:#C0EBBE; border-radius:5px'
-              main.prepend(success)
-              event.target.reset()
-              setTimeout(()=>{
-              window.location.href="dashboard.html"},1500)
-              return
-            }
-          }
+        const d=await fetch('http://localhost:3000/colleges')
+        const data=await d.json()
+        const found=data.some(x=>x.email===email && x.pass===pass)
+        if(found){
+          window.location.href='dashboard.html'
+          alert('Login Successful')
         }
-        let main=document.getElementById('maincont')
-        let success=document.createElement('p')
-        success.innerText='Email or Password is wrong'
-        success.style='color:red; border-width:1px;border-style:solid;border-color:rgb(255, 105, 105); padding:10px; font-weight:bold; background-color:#ECDBDB;border-radius:5px'
-        main.prepend(success)
-        event.target.reset()
+        else{
+          alert('Login Unsuccessful')
+        }
       }
     </script>
   </head>
